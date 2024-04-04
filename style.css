@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+}
+
+.cookieArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100vh;
+    background-image: radial-gradient(circle, rgb(91, 158, 165), rgb(54, 135, 144));
+}
+
+#shop {
+    width: 50%;
+    background-color: #333;
+    color: white;
+}
+
+#shop h1 {
+    margin: 0;
+    text-align: center;
+    padding: 10px;
+    background-color: #444;
+}
+
+#shop h2 {
+    margin: 0;
+    text-align: center;
+    padding: 10px;
+    background-color: #555;
+}
+
+.upgrade {
+    padding: 10px;
+    border-bottom: #666 solid 2px;
+}
+
+.upgrade button {
+    margin-left: 40%;
+    padding: 5px;
+    width: 20%;
+    border: none;
+    border-radius: 5px;
+}
