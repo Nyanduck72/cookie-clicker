@@ -11,26 +11,43 @@
     <div class="container">
         <div class="cookieArea">
             <div class="cookie">
-                <img src="img/cookie.png" alt="cookie" onclick="cookieClick()">
+                <img src="img/cookie.png" alt="Cookie" id="cookie" onclick="cookieClick(), animateCookie()">
             </div>
         </div>
         <div id="shop">
-            <h1>UPGRADES</h1>
-            <h2>COOKIES: <span id="cookieCount"></span></h2>
-            <div class="upgrades">
-                <div class="upgrade">
-                    <div style="display: flex; align-items: center;">
-                        <img src="img/click_hand.png" alt="clicker icon" height="30px" width="30px" style="margin-right: 20px;">
-                        <h3>AUTO-CLICKER</h3>
-                        <button onclick="buyUpgrade('clicker')">Buy</button> 
+            <div>
+                <h1>UPGRADES</h1>
+                <h2>COOKIES: <span id="cookieCount"></span></h2>
+                <div class="upgrades">
+                    <div class="upgrade">
+                        <div style="display: flex; align-items: center; justify-content: space-around;">
+                            <img src="img/click_hand.png" alt="clicker icon" height="30px" width="30px" style="margin-right: 20px;">
+                            <h3>AUTO-CLICKER</h3>
+                            <button onclick="buyUpgrade('clicker')">Buy</button> 
+                        </div>
+                        <div id="clicker"></div>    
                     </div>
-                    <div id="clicker"></div>    
+                    <div class="upgrade">
+                        <div id="buyGrannys" style="display: flex; align-items: center; justify-content: space-around"></div>
+                        <div id="granny"></div>
+                    </div>
+                    <div class="upgrade">
+                        <div id="buyFarms" style="display: flex; align-items: center; justify-content: space-around"></div>
+                        <div id="farm"></div>
+                    </div>
+                    <div class="upgrade">
+                        <div id="buyMines" style="display: flex; align-items: center; justify-content: space-around"></div>
+                        <div id="mine"></div>
+                    </div>
+                    <div class="upgrade">
+                        <div id="buyFactories" style="display: flex; align-items: center; justify-content: space-around"></div>
+                        <div id="factory"></div>
+                    </div>
+                    <div class="upgrade">
+                        <div id="buyBanks" style="display: flex; align-items: center; justify-content: space-around"></div>
+                        <div id="bank"></div>
+                    </div>
                 </div>
-                <div id="granny" class="upgrade"></div>
-                <div id="farm" class="upgrade"></div>
-                <div id="mine" class="upgrade"></div>
-                <div id="factory" class="upgrade"></div>
-                <div id="bank" class="upgrade"></div>
             </div>
         </div>
     </div>
