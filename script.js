@@ -4,41 +4,47 @@ let upgrades = {
         isUnlocked: true,
         cost: 10,
         amount: 0,
+        value: 1
     },
     granny:
     {
         isUnlocked: false,
         cost: 100,
         amount: 0,
+        value: 10
     },
     farm:
     {
         isUnlocked: false,
         cost: 1000,
         amount: 0,
+        value: 100
     },
     mine:
     {
         isUnlocked: false,
         cost: 10000,
         amount: 0,
+        value: 1000
     },
     factory:
     {
         isUnlocked: false,
         cost: 100000,
         amount: 0,
+        value: 10000
     },
     bank:
     {
         isUnlocked: false,
         cost: 1000000,
         amount: 0,
+        value: 100000
     }
 }
 
 let cookies = 0;
-let clickValue = 1;
+let CPS = 0;
 
 function animateCookie() {
     let cookie = document.getElementById('cookie');
@@ -47,11 +53,34 @@ function animateCookie() {
       cookie.classList.remove('clicked');
     }, 300); // Adjust the duration of animation in milliseconds
   }
+
   
-function updateCookies() { //Update current cookie counter
-    let cookieCount = document.getElementById('cookieCount');
-    cookieCount.innerHTML = cookies;
-}
+  let autoclickerIntervalId = null; // Variable to store the interval ID for autoclicker
+  let grannyIntervalId = null; // Variable to store the interval ID for grannys
+
+  function updateCookies() {
+      let cookieCount = document.getElementById('cookieCount');
+      let cps = document.getElementById('cps');
+
+      if (upgrades.clicker.amount > 0 && autoclickerIntervalId === null) { // Check if autoclicker is active and interval is not already set
+          autoclickerIntervalId = setInterval(() => {
+              cookieClick((upgrades.clicker.amount * upgrades.clicker.value));
+          }, (1000));
+      } else if (upgrades.clicker.amount === 0 && autoclickerIntervalId !== null) { // Check if autoclicker is not active and interval is set
+          clearInterval(autoclickerIntervalId); // Clear the interval
+          autoclickerIntervalId = null; // Reset interval ID
+      }
+      if (upgrades.granny.amount > 0 && grannyIntervalId === null) { // Check if granny is active and interval is not already set
+        grannyIntervalId = setInterval(() => {
+            cookieClick((upgrades.granny.amount * upgrades.granny.value));
+        }, (1000));
+    } else if (upgrades.granny.amount === 0 && grannyIntervalId !== null) { // Check if granny is not active and interval is set
+        clearInterval(grannyIntervalId); // Clear the interval
+        grannyIntervalId = null; // Reset interval ID
+    }
+      cookieCount.innerHTML = cookies;
+      cps.innerHTML = CPS;
+  }
 
 function updateUpgrades() {
     let clicker = document.getElementById('clicker');
@@ -105,13 +134,9 @@ function updateUpgrades() {
     upgrades.bank.isUnlocked ? bank.innerHTML = `Bought: ${upgrades.bank.amount} Cost: ${upgrades.bank.cost}` : bank.innerHTML = `<div style="text-align: center"><button onclick="unlockUpgrade('bank')" style="width: 40%; margin-left: 0;">Unlock for $${upgrades.bank.cost}</button></div>`;
 }
 
-function cookieClick() {
-    cookies += clickValue; // Add one cookie per click
+function cookieClick(x) {
+    cookies += x; // Add one cookie per click 
     updateCookies();
-}
-
-function Interval(callback){
-    return setInterval(callback, 1000); // 1 second interval for upgrades
 }
 
 function unlockUpgrade(upgrade) {
