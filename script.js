@@ -65,19 +65,20 @@ function animateCookie() {
       if (upgrades.clicker.amount > 0 && autoclickerIntervalId === null) { // Check if autoclicker is active and interval is not already set
           autoclickerIntervalId = setInterval(() => {
               cookieClick((upgrades.clicker.amount * upgrades.clicker.value));
-          }, (1000));
-      } else if (upgrades.clicker.amount === 0 && autoclickerIntervalId !== null) { // Check if autoclicker is not active and interval is set
-          clearInterval(autoclickerIntervalId); // Clear the interval
-          autoclickerIntervalId = null; // Reset interval ID
-      }
+        }, (1000));
+        } else if (upgrades.clicker.amount === 0 && autoclickerIntervalId !== null) { // Check if autoclicker is not active and interval is set
+            clearInterval(autoclickerIntervalId); // Clear the interval
+            autoclickerIntervalId = null; // Reset interval ID
+        }
+
       if (upgrades.granny.amount > 0 && grannyIntervalId === null) { // Check if granny is active and interval is not already set
         grannyIntervalId = setInterval(() => {
             cookieClick((upgrades.granny.amount * upgrades.granny.value));
         }, (1000));
-    } else if (upgrades.granny.amount === 0 && grannyIntervalId !== null) { // Check if granny is not active and interval is set
-        clearInterval(grannyIntervalId); // Clear the interval
-        grannyIntervalId = null; // Reset interval ID
-    }
+        } else if (upgrades.granny.amount === 0 && grannyIntervalId !== null) { // Check if granny is not active and interval is set
+            clearInterval(grannyIntervalId); // Clear the interval
+            grannyIntervalId = null; // Reset interval ID
+        }
       cookieCount.innerHTML = cookies;
       cps.innerHTML = CPS;
   }
@@ -104,7 +105,7 @@ function updateUpgrades() {
 
     // Check if granny upgrades are unlocked. If so, render UI for buying. If not, render UI for unlocking. 
     upgrades.granny.isUnlocked ? buyGrannys.innerHTML = `
-    <img src="img/granny.png" alt="granny icon" height="30px" width="30px" style="margin-right: 20px;">
+    <img src="img/awela.png" alt="granny icon" height="30px" width="30px" style="margin-right: 20px;">
     <h3>GRANNY</h3>
     <button onclick="buyUpgrade('granny')">Buy</button> ` : buyGrannys.innerHTML = `<div style="text-align: center"></div>`;
     upgrades.granny.isUnlocked ? granny.innerHTML = `Bought: ${upgrades.granny.amount} Cost: $${upgrades.granny.cost}` : granny.innerHTML = `<div style="text-align: center"><button onclick="unlockUpgrade('granny')" style="width: 40%; margin-left: 0;">Unlock for $${upgrades.granny.cost}</button></div>`;

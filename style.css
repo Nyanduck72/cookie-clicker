@@ -5,6 +5,15 @@ body {
     background-color: #333;
 }
 
+img {  
+    user-drag: none;  
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+ }
+
 .container {
     width: 100%;
     display: flex;
