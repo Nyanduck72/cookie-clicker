@@ -72,4 +72,11 @@ img {
     width: 20%;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+.upgrade button:hover {
+    background-color: rgb(140, 255, 157);
+    scale: 1.1;
+    transition: scale 0.1s ease-in-out;
 }
